@@ -73,6 +73,81 @@ def bun_bottom():
     ''')
 
 
+def add_grains(base, kind, count, seed):
+    rng = random.Random(seed)
+    marks = []
+    for _ in range(count):
+        x, y = rng.uniform(105, 408), rng.uniform(43, 113)
+        # Grains stay above the cream-coloured cut face.
+        if kind == "dome" and ((x-256)/175)**2 + ((y-105)/82)**2 > .83:
+            continue
+        color = rng.choice(("#fff1be", "#fbe4a2", "#e9cd80")) if kind == "dome" else rng.choice(("#5c4d3e", "#a98758", "#f5e4af"))
+        marks.append(f'<ellipse cx="{x:.1f}" cy="{y:.1f}" rx="{rng.uniform(2,4):.1f}" ry="{rng.uniform(1,2):.1f}" fill="{color}" transform="rotate({rng.randint(-70,70)} {x:.1f} {y:.1f})"/>')
+    return base.replace("</svg>", ''.join(marks) + "</svg>")
+
+
+def muffin_top():
+    return svg('''
+    <path d="M94 78 Q105 42 252 39 Q405 40 419 79 L418 117
+      Q408 142 255 144 Q103 141 94 117Z" fill="#d7b275"
+      stroke="#986f3f" stroke-width="4"/>
+    <ellipse cx="256" cy="81" rx="162" ry="41" fill="#e5c997"
+      stroke="#a77c45" stroke-width="4"/>
+    <path d="M100 112 Q256 132 413 112" fill="none" stroke="#a27543" stroke-width="3"/>
+    <path d="M154 78 Q203 49 270 60 Q320 48 354 77 Q318 99 255 95
+      Q192 105 154 78Z" fill="#ffde74" opacity=".92" stroke="#d9ad4b" stroke-width="2"/>
+    <path d="M159 113 Q256 130 410 113" fill="none" stroke="#f6dcab" stroke-width="5" opacity=".6"/>
+    ''')
+
+
+def muffin_bottom():
+    rng = random.Random(39)
+    dots = ''.join(f'<ellipse cx="{rng.uniform(111,403):.1f}" cy="{rng.uniform(72,114):.1f}" rx="{rng.uniform(1,4):.1f}" ry="{rng.uniform(1,2):.1f}" fill="{rng.choice(("#906d4c","#c2a17b","#fff2c9"))}" opacity=".7"/>' for _ in range(50))
+    return svg('''
+    <path d="M91 79 Q97 54 255 52 Q416 53 421 79 L418 118
+      Q405 144 257 145 Q108 143 93 118Z" fill="#bc8b5e"
+      stroke="#815d3c" stroke-width="4"/>
+    <ellipse cx="256" cy="75" rx="163" ry="36" fill="#dfc19a"
+      stroke="#9b7650" stroke-width="4"/>
+    <ellipse cx="255" cy="76" rx="136" ry="25" fill="#f2ddb4" opacity=".68"/>
+    ''' + dots)
+
+
+def grain_top():
+    return add_grains(bun_top(), "mixed", 94, 123)
+
+
+def grain_bottom():
+    return add_grains(bun_bottom(), "mixed", 55, 43)
+
+
+def royal_top():
+    return add_grains(bun_top(), "dome", 43, 85)
+
+
+def royal_bottom():
+    return bun_bottom()
+
+
+def big_mac_top():
+    return add_grains(bun_top(), "dome", 69, 57)
+
+
+def big_mac_middle():
+    return svg('''
+    <path d="M77 75 Q256 46 435 75 L433 111 Q419 137 257 139
+      Q92 137 79 111Z" fill="url(#bread)" stroke="#9f612c" stroke-width="4"/>
+    <ellipse cx="256" cy="75" rx="179" ry="32" fill="url(#crumb)"
+      stroke="#b47d3d" stroke-width="3"/>
+    <path d="M108 113 Q256 136 405 113" fill="none" stroke="#f8d997"
+      stroke-width="4" opacity=".55"/>
+    ''')
+
+
+def big_mac_bottom():
+    return bun_bottom()
+
+
 def patty_beef_10_1():
     rng = random.Random(101)
     specks = []
@@ -168,6 +243,15 @@ ART = {
     "salzgurke": pickle,
     "eisbergsalat": lettuce,
     "sauce_ketchup": ketchup,
+    "bun_mcmuffin_oberteil": muffin_top,
+    "bun_mcmuffin_unterteil": muffin_bottom,
+    "bun_koernerbroetchen_oberteil": grain_top,
+    "bun_koernerbroetchen_unterteil": grain_bottom,
+    "bun_hamburger_royal_oberteil": royal_top,
+    "bun_hamburger_royal_unterteil": royal_bottom,
+    "bun_big_mac_oberteil": big_mac_top,
+    "bun_big_mac_mittelteil": big_mac_middle,
+    "bun_big_mac_unterteil": big_mac_bottom,
 }
 
 
