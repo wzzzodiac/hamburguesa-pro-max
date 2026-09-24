@@ -1,0 +1,1385 @@
+{
+  "schemaVersion": 1,
+  "sourcePages": "51-63",
+  "orientation": "Each layers array follows the printed diagram from top to bottom; products are prepared upside down.",
+  "quantityConvention": "A sauce with unit=application has quantity applications, each of amountPerApplicationMl. Other quantities use the stated unit.",
+  "recipes": [
+    {
+      "id": "mcmuffin_fresh_chicken",
+      "name": "McMuffin Fresh Chicken",
+      "sourcePage": 51,
+      "category": "breakfast",
+      "layers": [
+        {
+          "ingredient": "bun_mcmuffin_oberteil",
+          "quantity": 1,
+          "unit": "piece",
+          "preparation": "buttered"
+        },
+        {
+          "ingredient": "patty_chicken_tempura",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "tomate",
+          "quantity": 1,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_sandwich",
+          "quantity": 1,
+          "unit": "application",
+          "amountPerApplicationMl": 10
+        },
+        {
+          "ingredient": "bun_mcmuffin_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "mcmuffin_egg",
+      "name": "McMuffin Egg",
+      "sourcePage": 51,
+      "category": "breakfast",
+      "layers": [
+        {
+          "ingredient": "bun_mcmuffin_oberteil",
+          "quantity": 1,
+          "unit": "piece",
+          "preparation": "buttered"
+        },
+        {
+          "ingredient": "round_egg",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "bun_mcmuffin_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "mcmuffin_bacon_egg",
+      "name": "McMuffin Bacon & Egg",
+      "sourcePage": 51,
+      "category": "breakfast",
+      "layers": [
+        {
+          "ingredient": "bun_mcmuffin_oberteil",
+          "quantity": 1,
+          "unit": "piece",
+          "preparation": "buttered"
+        },
+        {
+          "ingredient": "bacon_streifen",
+          "quantity": 2,
+          "unit": "strip"
+        },
+        {
+          "ingredient": "round_egg",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "bun_mcmuffin_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "mcmuffin_sausage_egg",
+      "name": "McMuffin Sausage & Egg",
+      "sourcePage": 52,
+      "category": "breakfast",
+      "layers": [
+        {
+          "ingredient": "bun_mcmuffin_oberteil",
+          "quantity": 1,
+          "unit": "piece",
+          "preparation": "buttered"
+        },
+        {
+          "ingredient": "round_egg",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_sausage",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "bun_mcmuffin_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "mctoast_cheese",
+      "name": "McToast Cheese",
+      "sourcePage": 52,
+      "category": "breakfast",
+      "layers": [
+        {
+          "ingredient": "bun_hamburger_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 2,
+          "unit": "piece",
+          "placement": "star"
+        },
+        {
+          "ingredient": "bun_hamburger_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "mctoast_bacon_cheese",
+      "name": "McToast Bacon & Cheese",
+      "sourcePage": 52,
+      "category": "breakfast",
+      "layers": [
+        {
+          "ingredient": "bun_hamburger_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "bacon_streifen",
+          "quantity": 3,
+          "unit": "strip"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 2,
+          "unit": "piece",
+          "placement": "star"
+        },
+        {
+          "ingredient": "bun_hamburger_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "mcwrap_ruehrei_bacon",
+      "name": "McWrap Rührei Bacon",
+      "sourcePage": 53,
+      "category": "breakfast_wrap",
+      "layers": [
+        {
+          "ingredient": "ruehrei",
+          "quantity": 1,
+          "unit": "portion",
+          "preparation": "1.5 eggs per portion"
+        },
+        {
+          "ingredient": "cheese_standard_half",
+          "quantity": 2,
+          "unit": "half_slice"
+        },
+        {
+          "ingredient": "bacon_streifen",
+          "quantity": 3,
+          "unit": "strip"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 20,
+          "unit": "g"
+        },
+        {
+          "ingredient": "crispy_onions",
+          "quantity": 3,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_breakfast",
+          "quantity": 20,
+          "unit": "g"
+        },
+        {
+          "ingredient": "wrap_tortilla",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "mcwrap_ruehrei_cheese",
+      "name": "McWrap Rührei Cheese",
+      "sourcePage": 53,
+      "category": "breakfast_wrap",
+      "layers": [
+        {
+          "ingredient": "ruehrei",
+          "quantity": 1,
+          "unit": "portion",
+          "preparation": "1.5 eggs per portion"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 2,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "tomate",
+          "quantity": 2,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 20,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_breakfast",
+          "quantity": 20,
+          "unit": "g"
+        },
+        {
+          "ingredient": "wrap_tortilla",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "big_morning_chicken",
+      "name": "Big Morning Chicken",
+      "sourcePage": 54,
+      "category": "breakfast",
+      "layers": [
+        {
+          "ingredient": "bun_koernerbroetchen_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_chicken_tempura",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "tomate",
+          "quantity": 2,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 12.5,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_sandwich",
+          "quantity": 2,
+          "unit": "application",
+          "amountPerApplicationMl": 10
+        },
+        {
+          "ingredient": "bun_koernerbroetchen_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "big_morning_farmer",
+      "name": "Big Morning Farmer",
+      "sourcePage": 54,
+      "category": "breakfast",
+      "layers": [
+        {
+          "ingredient": "bun_koernerbroetchen_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_sausage",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "bacon_streifen",
+          "quantity": 3,
+          "unit": "strip"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "tomate",
+          "quantity": 2,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 12.5,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_sandwich",
+          "quantity": 2,
+          "unit": "application",
+          "amountPerApplicationMl": 10
+        },
+        {
+          "ingredient": "bun_koernerbroetchen_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "big_morning_egg",
+      "name": "Big Morning Egg",
+      "sourcePage": 55,
+      "category": "breakfast",
+      "layers": [
+        {
+          "ingredient": "bun_koernerbroetchen_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "round_egg",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "tomate",
+          "quantity": 2,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 12.5,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_breakfast",
+          "quantity": 20,
+          "unit": "g"
+        },
+        {
+          "ingredient": "bun_koernerbroetchen_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "hamburger",
+      "name": "Hamburger",
+      "sourcePage": 55,
+      "category": "burger",
+      "layers": [
+        {
+          "ingredient": "bun_hamburger_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_beef_10_1",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "salzgurke",
+          "quantity": 1,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "sauce_ketchup",
+          "quantity": 1,
+          "unit": "application",
+          "amountPerApplicationMl": 10
+        },
+        {
+          "ingredient": "sauce_senf",
+          "quantity": 0.79,
+          "unit": "g"
+        },
+        {
+          "ingredient": "bun_hamburger_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "cheeseburger",
+      "name": "Cheeseburger",
+      "sourcePage": 55,
+      "category": "burger",
+      "layers": [
+        {
+          "ingredient": "bun_hamburger_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_beef_10_1",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "salzgurke",
+          "quantity": 1,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "sauce_ketchup",
+          "quantity": 1,
+          "unit": "application",
+          "amountPerApplicationMl": 10
+        },
+        {
+          "ingredient": "sauce_senf",
+          "quantity": 0.79,
+          "unit": "g"
+        },
+        {
+          "ingredient": "bun_hamburger_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "double_cheeseburger",
+      "name": "Double Cheeseburger",
+      "sourcePage": 56,
+      "category": "burger",
+      "layers": [
+        {
+          "ingredient": "bun_hamburger_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_beef_10_1",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece",
+          "placement": "star"
+        },
+        {
+          "ingredient": "patty_beef_10_1",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "salzgurke",
+          "quantity": 2,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "sauce_ketchup",
+          "quantity": 1,
+          "unit": "application",
+          "amountPerApplicationMl": 10
+        },
+        {
+          "ingredient": "sauce_senf",
+          "quantity": 0.79,
+          "unit": "g"
+        },
+        {
+          "ingredient": "bun_hamburger_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "mcdouble_chili_cheese",
+      "name": "McDouble Chili Cheese",
+      "sourcePage": 56,
+      "category": "burger",
+      "layers": [
+        {
+          "ingredient": "bun_hamburger_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_beef_10_1",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_beef_10_1",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "jalapenos",
+          "quantity": 3,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "sauce_hot_chili_cheese",
+          "quantity": 20,
+          "unit": "g"
+        },
+        {
+          "ingredient": "bun_hamburger_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "big_mac",
+      "name": "Big Mac",
+      "sourcePage": 57,
+      "category": "burger",
+      "layers": [
+        {
+          "ingredient": "bun_big_mac_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_beef_10_1",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "salzgurke",
+          "quantity": 2,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 12.5,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_big_mac",
+          "quantity": 1,
+          "unit": "application",
+          "amountPerApplicationMl": 15
+        },
+        {
+          "ingredient": "bun_big_mac_mittelteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_beef_10_1",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 12.5,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_big_mac",
+          "quantity": 1,
+          "unit": "application",
+          "amountPerApplicationMl": 15
+        },
+        {
+          "ingredient": "bun_big_mac_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "big_tasty_bacon",
+      "name": "Big Tasty Bacon",
+      "sourcePage": 57,
+      "category": "burger",
+      "layers": [
+        {
+          "ingredient": "bun_big_tasty_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 2,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_beef_3_1",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "bacon_streifen",
+          "quantity": 3,
+          "unit": "strip"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "tomate",
+          "quantity": 2,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 28,
+          "unit": "g"
+        },
+        {
+          "ingredient": "zwiebeln_frisch_weiss",
+          "quantity": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_big_tasty",
+          "quantity": 3,
+          "unit": "application",
+          "amountPerApplicationMl": 10
+        },
+        {
+          "ingredient": "bun_big_tasty_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "hamburger_royal_cheese",
+      "name": "Hamburger Royal Cheese",
+      "sourcePage": 58,
+      "category": "burger",
+      "layers": [
+        {
+          "ingredient": "bun_hamburger_royal_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece",
+          "placement": "star"
+        },
+        {
+          "ingredient": "patty_beef_4_1",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "salzgurke",
+          "quantity": 2,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "zwiebeln_frisch_weiss",
+          "quantity": 7,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_ketchup",
+          "quantity": 1,
+          "unit": "application",
+          "amountPerApplicationMl": 15
+        },
+        {
+          "ingredient": "sauce_senf",
+          "quantity": 0.79,
+          "unit": "g"
+        },
+        {
+          "ingredient": "bun_hamburger_royal_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "double_hamburger_royal_cheese",
+      "name": "Double Hamburger Royal Cheese",
+      "sourcePage": 58,
+      "category": "burger",
+      "layers": [
+        {
+          "ingredient": "bun_hamburger_royal_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_beef_4_1",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece",
+          "placement": "star"
+        },
+        {
+          "ingredient": "patty_beef_4_1",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "salzgurke",
+          "quantity": 2,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "zwiebeln_frisch_weiss",
+          "quantity": 7,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_ketchup",
+          "quantity": 1,
+          "unit": "application",
+          "amountPerApplicationMl": 15
+        },
+        {
+          "ingredient": "sauce_senf",
+          "quantity": 0.79,
+          "unit": "g"
+        },
+        {
+          "ingredient": "bun_hamburger_royal_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "hamburger_royal_ts",
+      "name": "Hamburger Royal TS",
+      "sourcePage": 58,
+      "category": "burger",
+      "layers": [
+        {
+          "ingredient": "bun_hamburger_royal_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_beef_4_1",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "tomate",
+          "quantity": 2,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 12.5,
+          "unit": "g"
+        },
+        {
+          "ingredient": "zwiebeln_frisch_weiss",
+          "quantity": 7,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_sandwich",
+          "quantity": 2,
+          "unit": "application",
+          "amountPerApplicationMl": 10
+        },
+        {
+          "ingredient": "bun_hamburger_royal_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "double_hamburger_royal_ts",
+      "name": "Double Hamburger Royal TS",
+      "sourcePage": 58,
+      "category": "burger",
+      "layers": [
+        {
+          "ingredient": "bun_hamburger_royal_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_beef_4_1",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece",
+          "placement": "star"
+        },
+        {
+          "ingredient": "patty_beef_4_1",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "tomate",
+          "quantity": 2,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 12.5,
+          "unit": "g"
+        },
+        {
+          "ingredient": "zwiebeln_frisch_weiss",
+          "quantity": 7,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_sandwich",
+          "quantity": 2,
+          "unit": "application",
+          "amountPerApplicationMl": 10
+        },
+        {
+          "ingredient": "bun_hamburger_royal_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "double_beef_classic",
+      "name": "Double Beef Classic",
+      "sourcePage": 59,
+      "category": "burger",
+      "layers": [
+        {
+          "ingredient": "bun_hamburger_royal_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "sauce_big_tasty",
+          "quantity": 1,
+          "unit": "application",
+          "amountPerApplicationMl": 10
+        },
+        {
+          "ingredient": "patty_beef_10_1",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_beef_10_1",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 12.5,
+          "unit": "g"
+        },
+        {
+          "ingredient": "salzgurke",
+          "quantity": 2,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "sauce_honig_senf",
+          "quantity": 2,
+          "unit": "application",
+          "amountPerApplicationMl": 10
+        },
+        {
+          "ingredient": "bun_hamburger_royal_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "filet_o_fish",
+      "name": "Filet-o-Fish",
+      "sourcePage": 59,
+      "category": "burger",
+      "layers": [
+        {
+          "ingredient": "bun_hamburger_unterteil",
+          "quantity": 1,
+          "unit": "piece",
+          "preparation": "steamed"
+        },
+        {
+          "ingredient": "cheese_standard_half",
+          "quantity": 1,
+          "unit": "half_slice"
+        },
+        {
+          "ingredient": "patty_filet_o_fish",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "sauce_tartar",
+          "quantity": 1,
+          "unit": "application",
+          "amountPerApplicationMl": 20
+        },
+        {
+          "ingredient": "bun_hamburger_oberteil",
+          "quantity": 1,
+          "unit": "piece",
+          "preparation": "steamed"
+        }
+      ]
+    },
+    {
+      "id": "mcrib",
+      "name": "McRib",
+      "sourcePage": 60,
+      "category": "burger",
+      "layers": [
+        {
+          "ingredient": "bun_mcrib_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_pork_mcrib",
+          "quantity": 1,
+          "unit": "piece",
+          "preparation": "marinated with approximately 40 g Western/McRib sauce in UHC"
+        },
+        {
+          "ingredient": "salzgurke",
+          "quantity": 2,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "zwiebeln_frisch_weiss",
+          "quantity": 7,
+          "unit": "g"
+        },
+        {
+          "ingredient": "bun_mcrib_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "mcchicken_classic",
+      "name": "McChicken Classic",
+      "sourcePage": 60,
+      "category": "burger",
+      "layers": [
+        {
+          "ingredient": "bun_mcrib_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_chicken_classic",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 12.5,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_sandwich",
+          "quantity": 2,
+          "unit": "application",
+          "amountPerApplicationMl": 10
+        },
+        {
+          "ingredient": "bun_mcrib_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "mccrispy",
+      "name": "McCrispy",
+      "sourcePage": 61,
+      "category": "burger",
+      "layers": [
+        {
+          "ingredient": "bun_mccrispy_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_mccrispy",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 12.5,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_honig_senf",
+          "quantity": 2,
+          "unit": "application",
+          "amountPerApplicationMl": 10
+        },
+        {
+          "ingredient": "bun_mccrispy_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "chickenburger",
+      "name": "Chickenburger",
+      "sourcePage": 61,
+      "category": "burger",
+      "layers": [
+        {
+          "ingredient": "bun_hamburger_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_chicken_tempura",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_sweet_chili",
+          "quantity": 1,
+          "unit": "application",
+          "amountPerApplicationMl": 12
+        },
+        {
+          "ingredient": "bun_hamburger_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "double_chickenburger",
+      "name": "Double Chickenburger",
+      "sourcePage": 61,
+      "category": "burger",
+      "layers": [
+        {
+          "ingredient": "bun_hamburger_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_chicken_tempura",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_chicken_tempura",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 10,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_sweet_chili",
+          "quantity": 1,
+          "unit": "application",
+          "amountPerApplicationMl": 12
+        },
+        {
+          "ingredient": "bun_hamburger_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "mcwrap_chicken_honig_senf",
+      "name": "McWrap Chicken Honig-Senf",
+      "sourcePage": 62,
+      "category": "wrap",
+      "layers": [
+        {
+          "ingredient": "patty_chicken_classic_half",
+          "quantity": 2,
+          "unit": "half_patty"
+        },
+        {
+          "ingredient": "cheese_standard_half",
+          "quantity": 2,
+          "unit": "half_slice"
+        },
+        {
+          "ingredient": "tomate",
+          "quantity": 2,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 25,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_honig_senf",
+          "quantity": 1,
+          "unit": "application",
+          "amountPerApplicationMl": 10
+        },
+        {
+          "ingredient": "sauce_sandwich",
+          "quantity": 2,
+          "unit": "application",
+          "amountPerApplicationMl": 10
+        },
+        {
+          "ingredient": "wrap_tortilla",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "mcwrap_veggie_honig_senf",
+      "name": "McWrap Veggie Honig-Senf",
+      "sourcePage": 62,
+      "category": "wrap",
+      "layers": [
+        {
+          "ingredient": "patty_veggie_half",
+          "quantity": 2,
+          "unit": "half_patty"
+        },
+        {
+          "ingredient": "cheese_standard_half",
+          "quantity": 2,
+          "unit": "half_slice"
+        },
+        {
+          "ingredient": "tomate",
+          "quantity": 2,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 25,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_honig_senf",
+          "quantity": 1,
+          "unit": "application",
+          "amountPerApplicationMl": 10
+        },
+        {
+          "ingredient": "sauce_sandwich",
+          "quantity": 2,
+          "unit": "application",
+          "amountPerApplicationMl": 10
+        },
+        {
+          "ingredient": "wrap_tortilla",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "mcveggie_ts",
+      "name": "McVeggie TS",
+      "sourcePage": 63,
+      "category": "burger",
+      "layers": [
+        {
+          "ingredient": "bun_hamburger_royal_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_veggie",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "cheese_standard",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "tomate",
+          "quantity": 2,
+          "unit": "slice"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 12.5,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_sandwich",
+          "quantity": 2,
+          "unit": "application",
+          "amountPerApplicationMl": 10
+        },
+        {
+          "ingredient": "bun_hamburger_royal_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    },
+    {
+      "id": "mcveggie",
+      "name": "McVeggie",
+      "sourcePage": 63,
+      "category": "burger",
+      "layers": [
+        {
+          "ingredient": "bun_hamburger_royal_unterteil",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "patty_veggie",
+          "quantity": 1,
+          "unit": "piece"
+        },
+        {
+          "ingredient": "eisbergsalat",
+          "quantity": 12.5,
+          "unit": "g"
+        },
+        {
+          "ingredient": "sauce_sandwich",
+          "quantity": 2,
+          "unit": "application",
+          "amountPerApplicationMl": 10
+        },
+        {
+          "ingredient": "bun_hamburger_royal_oberteil",
+          "quantity": 1,
+          "unit": "piece"
+        }
+      ]
+    }
+  ]
+}
