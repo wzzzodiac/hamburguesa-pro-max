@@ -1,5 +1,6 @@
 import { generateOrder } from './order-generator.mjs';
 import { ingredientCatalog, checkProduct } from './game-core.mjs';
+import { practiceOrder, retryOrder } from './training-mode.mjs';
 
 const $ = selector => document.querySelector(selector);
 const imageUrl = id => new URL(`../assets/ingredients/${id}.png`, import.meta.url).href;
@@ -53,6 +54,8 @@ let order = null;
 let lineStates = [];
 let currentLine = 0;
 let currentCategory = 'burger';
+let currentMode = 'order';
+let currentRecipeId = null;
 let currentGroup = 'bread';
 let selectedIngredient = null;
 let lastErrors = null;
@@ -157,7 +160,7 @@ function changeQuantity(direction) {
 }
 
 function addLayer() {
-  if (!selectedIngredient) return;
+  if (!selectedIngredient || lineStates[currentLine].result !== null) return;
   const unit = catalog.get(selectedIngredient);
   const input = $('#quantity-input');
   const quantity = Number(input.value);
@@ -184,6 +187,8 @@ function selectLine(index) {
   lastErrors = null;
   $('#quantity-panel').classList.add('hidden');
   $('#feedback').classList.add('hidden');
+  $('#submit-button').disabled = false;
+  $('#add-button').disabled = false;
   const item = order.items[index];
   $('#product-title').textContent = item.productName;
   $('#product-subtitle').textContent = item.modifier?.label ?? 'Ohne Änderung';
@@ -197,6 +202,35 @@ function errorText(error) {
   if (error.type === 'ingredient') return `${level}: Hier gehört ${ingredientName(error.wanted.ingredient)} hin, statt ${ingredientName(error.placed.ingredient)}. Prüfe auch die Reihenfolge.`;
   if (error.type === 'dose') return `${level}: ${ingredientName(error.wanted.ingredient)} braucht ${error.wanted.amountPerApplicationMl} ml pro Auftrag; gewählt sind ${error.placed.amountPerApplicationMl} ml.`;
   return `${level}: ${ingredientName(error.wanted.ingredient)} braucht ${quantityText(error.wanted.quantity, error.wanted.unit)}; gelegt sind ${quantityText(error.placed.quantity, error.placed.unit)}.`;
+}
+
+function renderComparison(placed, expected, errors) {
+  const comparison = document.createElement('div'); comparison.className = 'recipe-comparison';
+  const heading = document.createElement('h4'); heading.textContent = 'Aufbau vergleichen · von unten nach oben';
+  comparison.append(heading);
+  const columns = document.createElement('div'); columns.className = 'comparison-columns';
+  const wrongIndexes = new Set(errors.map(error => error.index));
+  for (const [title, layers] of [['Dein Aufbau', placed], ['Richtiger Aufbau', expected]]) {
+    const column = document.createElement('div'); column.className = 'comparison-column';
+    const label = document.createElement('h5'); label.textContent = title; column.append(label);
+    if (!layers.length) {
+      const empty = document.createElement('p'); empty.textContent = 'Keine Zutaten aufgelegt.'; column.append(empty);
+    } else {
+      const list = document.createElement('ol');
+      layers.forEach((layer, index) => {
+        const row = document.createElement('li');
+        if (wrongIndexes.has(index)) row.classList.add('mismatch');
+        const img = document.createElement('img'); img.src = imageUrl(layer.ingredient); img.alt = '';
+        const detail = document.createElement('span');
+        detail.textContent = `${ingredientName(layer.ingredient)} · ${quantityText(layer.quantity, layer.unit)}${layer.unit === 'application' ? ` × ${layer.amountPerApplicationMl} ml` : ''}`;
+        row.append(img, detail); list.append(row);
+      });
+      column.append(list);
+    }
+    columns.append(column);
+  }
+  comparison.append(columns);
+  return comparison;
 }
 
 function submitProduct() {
@@ -220,13 +254,36 @@ function submitProduct() {
     correct.addEventListener('click', () => { feedback.classList.add('hidden'); }); actions.append(correct);
   }
   const next = document.createElement('button'); next.type = 'button'; next.className = 'button dark';
-  next.textContent = lineStates.filter((entry, i) => i !== currentLine && entry.result === null).length ? 'Weiter zum nächsten Produkt' : 'Zusammenfassung ansehen';
+  next.textContent = lastErrors.length ? 'Abgeben & Aufbau vergleichen'
+    : lineStates.filter((entry, i) => i !== currentLine && entry.result === null).length ? 'Weiter zum nächsten Produkt' : 'Zusammenfassung ansehen';
   next.addEventListener('click', finishLine); actions.append(next); feedback.append(actions);
   feedback.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
 }
 
 function finishLine() {
-  lineStates[currentLine].result = lastErrors.length ? 'incorrect' : 'correct';
+  const state = lineStates[currentLine];
+  if (state.result !== null || !lastErrors) return;
+  state.result = lastErrors.length ? 'incorrect' : 'correct';
+  if (lastErrors.length) {
+    const feedback = $('#feedback');
+    feedback.append(renderComparison(state.layers, order.items[currentLine].expectedLayers, lastErrors));
+    feedback.querySelector('.feedback-actions').replaceChildren();
+    const next = document.createElement('button'); next.type = 'button'; next.className = 'button dark';
+    next.textContent = lineStates.some(entry => entry.result === null) ? 'Weiter zum nächsten Produkt' : 'Zusammenfassung ansehen';
+    next.addEventListener('click', advanceLine);
+    feedback.querySelector('.feedback-actions').append(next);
+    $('#submit-button').disabled = true;
+    $('#add-button').disabled = true;
+    $('#undo-button').disabled = true;
+    $('#reset-button').disabled = true;
+    renderTicket();
+    feedback.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    return;
+  }
+  advanceLine();
+}
+
+function advanceLine() {
   const next = lineStates.findIndex(state => state.result === null);
   if (next >= 0) selectLine(next);
   else showSummary();
@@ -244,17 +301,42 @@ function showSummary() {
     status.textContent = `${lineStates[index].result === 'correct' ? 'Richtig' : 'Mit Fehlern abgegeben'} · ${lineStates[index].attempts} ${lineStates[index].attempts === 1 ? 'Versuch' : 'Versuche'}`;
     li.append(title, status); list.append(li);
   });
+  $('#retry-button').classList.toggle('hidden', !lineStates.some(state => state.result === 'incorrect'));
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function startOrder(category) {
+function startSession(nextOrder, category, mode, recipeId = null) {
   currentCategory = category;
-  order = generateOrder(recipes, { categories: categoryPools[category] });
+  currentMode = mode;
+  currentRecipeId = recipeId;
+  order = nextOrder;
   lineStates = order.items.map(() => ({ layers: [], result: null, attempts: 0 }));
   currentGroup = 'bread'; selectedIngredient = null;
-  $('#game-title').textContent = `${categoryNames[category]}-Bestellung`;
+  $('#game-title').textContent = mode === 'single' ? 'Einzelübung' : mode === 'retry' ? 'Fehler erneut üben' : `${categoryNames[category]}-Bestellung`;
+  $('#new-order-button').textContent = mode === 'single' ? 'Produkt neu üben' : 'Neue Bestellung';
   renderGroupTabs(); showScreen('game-screen'); selectLine(0);
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function startOrder(category, mode, recipeId) {
+  const selected = recipes.find(recipe => recipe.id === recipeId && categoryPools[category].includes(recipe.category));
+  if (mode === 'single' && !selected) return;
+  startSession(mode === 'single' ? practiceOrder(selected)
+    : generateOrder(recipes, { categories: categoryPools[category] }), category, mode, selected?.id ?? null);
+}
+
+function populateRecipePicker() {
+  const category = $('input[name="category"]:checked').value;
+  const select = $('#recipe-select');
+  const previous = select.value;
+  select.replaceChildren();
+  recipes.filter(recipe => categoryPools[category].includes(recipe.category))
+    .sort((a, b) => a.name.localeCompare(b.name, 'de'))
+    .forEach(recipe => {
+      const option = document.createElement('option'); option.value = recipe.id; option.textContent = recipe.name;
+      select.append(option);
+    });
+  if ([...select.options].some(option => option.value === previous)) select.value = previous;
 }
 
 async function init() {
@@ -268,9 +350,20 @@ async function init() {
     $('.small-note').textContent = `Die Rezeptdaten konnten nicht geladen werden (${error.message}). Bitte die Seite neu laden.`;
     return;
   }
-  $('#start-button').addEventListener('click', () => startOrder($('input[name="category"]:checked').value));
-  $('#new-order-button').addEventListener('click', () => startOrder(currentCategory));
-  $('#summary-new-button').addEventListener('click', () => startOrder(currentCategory));
+  populateRecipePicker();
+  document.querySelectorAll('input[name="category"]').forEach(input => input.addEventListener('change', populateRecipePicker));
+  document.querySelectorAll('input[name="practice-mode"]').forEach(input => input.addEventListener('change', () => {
+    $('#recipe-picker').classList.toggle('hidden', $('input[name="practice-mode"]:checked').value !== 'single');
+    $('#start-button').firstChild.textContent = input.value === 'single' ? 'Produkt üben ' : 'Bestellung starten ';
+  }));
+  $('#start-button').addEventListener('click', () => startOrder($('input[name="category"]:checked').value,
+    $('input[name="practice-mode"]:checked').value, $('#recipe-select').value));
+  $('#new-order-button').addEventListener('click', () => startOrder(currentCategory, currentMode === 'retry' ? 'order' : currentMode, currentRecipeId));
+  $('#summary-new-button').addEventListener('click', () => startOrder(currentCategory, currentMode === 'retry' ? 'order' : currentMode, currentRecipeId));
+  $('#retry-button').addEventListener('click', () => {
+    const next = retryOrder(order, lineStates);
+    if (next.items.length) startSession(next, currentCategory, 'retry');
+  });
   $('#undo-button').addEventListener('click', () => { lineStates[currentLine].layers.pop(); $('#feedback').classList.add('hidden'); renderStack(); });
   $('#reset-button').addEventListener('click', () => { lineStates[currentLine].layers = []; $('#feedback').classList.add('hidden'); renderStack(); });
   $('#quantity-minus').addEventListener('click', () => changeQuantity(-1));

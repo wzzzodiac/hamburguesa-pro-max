@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7eee1">
   <title>Burger Training · Bestellung bauen</title>
-  <link rel="stylesheet" href="./src/styles.css?v=2">
-  <script type="module" src="./src/app.mjs?v=2"></script>
+  <link rel="stylesheet" href="./src/styles.css?v=3">
+  <script type="module" src="./src/app.mjs?v=3"></script>
 </head>
 <body>
   <header class="site-header">
@@ -26,8 +26,14 @@
           <label><input type="radio" name="category" value="breakfast"><span>☀️ Frühstück</span></label>
           <label><input type="radio" name="category" value="wrap"><span>🌯 Wraps</span></label>
         </fieldset>
+        <fieldset class="mode-picker">
+          <legend>Wie möchtest du üben?</legend>
+          <label><input type="radio" name="practice-mode" value="order" checked><span>Zufällige Bestellung</span></label>
+          <label><input type="radio" name="practice-mode" value="single"><span>Ein bestimmtes Produkt</span></label>
+        </fieldset>
+        <div id="recipe-picker" class="recipe-picker hidden"><label for="recipe-select">Produkt wählen</label><select id="recipe-select"></select></div>
         <button id="start-button" class="button primary big">Bestellung starten <span aria-hidden="true">→</span></button>
-        <p class="small-note">2–5 Produkte pro Bestellung · mit normalen und geänderten Produkten</p>
+        <p class="small-note">Zufällige Bestellungen: 2–5 Produkte, normale und geänderte Varianten. Einzelübung: ein Grundrezept.</p>
       </div>
       <div class="intro-art" aria-hidden="true">
         <span class="art-tag">SO GEHT’S</span>
@@ -47,10 +53,14 @@
         <button id="new-order-button" class="button quiet">Neue Bestellung</button>
       </div>
       <div class="game-layout">
-        <aside class="ticket-panel panel">
-          <div class="panel-heading"><span class="panel-kicker">01 / TICKET</span><h2>Bestellung</h2><p>Tippe auf ein Produkt.</p></div>
-          <ol id="ticket-list" class="ticket-list"></ol>
-          <p id="ticket-progress" class="ticket-progress"></p>
+        <aside class="ticket-panel panel" aria-label="Digitaler Bestellmonitor">
+          <div class="monitor-bezel"><span class="monitor-brand">KÜCHE / TRAINING</span><span class="monitor-led" aria-hidden="true"></span></div>
+          <div class="monitor-display">
+            <div class="panel-heading"><span class="panel-kicker">01 / BESTELLMONITOR</span><h2>Bestellung</h2><p>Produkt zum Bearbeiten antippen.</p></div>
+            <ol id="ticket-list" class="ticket-list"></ol>
+            <p id="ticket-progress" class="ticket-progress"></p>
+          </div>
+          <div class="monitor-foot" aria-hidden="true"><span>ORDER QUEUE</span><span>● LIVE</span></div>
         </aside>
 
         <section class="work-panel panel" aria-label="Montageplatz">
@@ -84,6 +94,7 @@
     <section id="summary-screen" class="summary-screen hidden">
       <p class="eyebrow">BESTELLUNG ABGESCHLOSSEN</p><h1>Gut gearbeitet!</h1><p id="summary-intro"></p>
       <ol id="summary-list" class="summary-list"></ol>
+      <button id="retry-button" class="button dark big hidden">Fehler erneut üben</button>
       <button id="summary-new-button" class="button primary big">Neue Bestellung üben <span aria-hidden="true">→</span></button>
     </section>
   </main>
