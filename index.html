@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7eee1">
+  <title>Burger Training · Bestellung bauen</title>
+  <link rel="stylesheet" href="./src/styles.css">
+  <script type="module" src="./src/app.mjs"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand"><span class="brand-icon" aria-hidden="true">▤</span><span>Burger <strong>Training</strong></span></div>
+    <span class="header-note">Schicht für Schicht üben</span>
+  </header>
+
+  <main>
+    <section id="start-screen" class="start-screen">
+      <div class="intro-copy">
+        <p class="eyebrow">TRAINING AM MONTAGEPLATZ</p>
+        <h1>Eine Bestellung.<br><em>Dein Aufbau.</em></h1>
+        <p>Wähle ein Ticket, lege jede Zutat in der richtigen Menge auf und gib das Produkt ab. Du baust umgedreht: Die erste Schicht liegt unten.</p>
+        <fieldset class="category-picker">
+          <legend>Was möchtest du üben?</legend>
+          <label><input type="radio" name="category" value="burger" checked><span>🍔 Burger</span></label>
+          <label><input type="radio" name="category" value="breakfast"><span>☀️ Frühstück</span></label>
+          <label><input type="radio" name="category" value="wrap"><span>🌯 Wraps</span></label>
+        </fieldset>
+        <button id="start-button" class="button primary big">Bestellung starten <span aria-hidden="true">→</span></button>
+        <p class="small-note">2–5 Produkte pro Bestellung · mit normalen und geänderten Produkten</p>
+      </div>
+      <div class="intro-art" aria-hidden="true">
+        <span class="art-tag">SO GEHT’S</span>
+        <div class="art-stack">
+          <img src="./assets/ingredients/bun_hamburger_oberteil.png" alt="">
+          <img src="./assets/ingredients/patty_beef_10_1.png" alt="">
+          <img src="./assets/ingredients/cheese_standard.png" alt="">
+          <img src="./assets/ingredients/bun_hamburger_unterteil.png" alt="">
+        </div>
+        <p>Oben auf dem Plan.<br>Unten auf dem Tisch.</p>
+      </div>
+    </section>
+
+    <section id="game-screen" class="game-screen hidden" aria-label="Bestellung bearbeiten">
+      <div class="game-heading">
+        <div><p class="eyebrow">DEIN TRAINING</p><h1 id="game-title">Bestellung</h1></div>
+        <button id="new-order-button" class="button quiet">Neue Bestellung</button>
+      </div>
+      <div class="game-layout">
+        <aside class="ticket-panel panel">
+          <div class="panel-heading"><span class="panel-kicker">01 / TICKET</span><h2>Bestellung</h2><p>Tippe auf ein Produkt.</p></div>
+          <ol id="ticket-list" class="ticket-list"></ol>
+          <p id="ticket-progress" class="ticket-progress"></p>
+        </aside>
+
+        <section class="work-panel panel" aria-label="Montageplatz">
+          <div class="panel-heading work-heading"><div><span class="panel-kicker">02 / MONTAGE</span><h2 id="product-title">Produkt wählen</h2><p id="product-subtitle"></p></div><span class="flip-pill">↟ umgedreht</span></div>
+          <div class="workbench">
+            <div class="stack-stage"><div id="stack" class="stack" aria-live="polite"></div><div class="counter-line"></div></div>
+            <div id="empty-stack" class="empty-stack">Wähle unten eine Zutat und lege sie auf.</div>
+          </div>
+          <div class="assembly-meta"><span id="layer-count">0 Schichten</span><span>Erste Zutat liegt unten</span></div>
+          <div class="work-actions"><button id="undo-button" class="button secondary" disabled>↶ Rückgängig</button><button id="reset-button" class="button secondary" disabled>Neu aufbauen</button></div>
+          <div id="feedback" class="feedback hidden" role="status"></div>
+          <button id="submit-button" class="button primary submit-button">Bestellung ist fertig</button>
+        </section>
+
+        <section class="ingredients-panel panel" aria-label="Zutaten wählen">
+          <div class="panel-heading"><span class="panel-kicker">03 / ZUTATEN</span><h2>Zutat wählen</h2><p>Menge selbst einstellen, dann auflegen.</p></div>
+          <div id="group-tabs" class="group-tabs" role="group" aria-label="Zutatengruppe"></div>
+          <div id="ingredient-grid" class="ingredient-grid"></div>
+          <div id="quantity-panel" class="quantity-panel hidden">
+            <div class="selected-ingredient"><img id="selected-image" alt=""><div><strong id="selected-name"></strong><span id="selected-unit"></span></div></div>
+            <label for="quantity-input">Menge</label>
+            <div class="quantity-control"><button id="quantity-minus" type="button" aria-label="Menge verringern">−</button><input id="quantity-input" type="number" inputmode="decimal" min="0.01" step="any" value="1"><button id="quantity-plus" type="button" aria-label="Menge erhöhen">+</button><span id="quantity-suffix"></span></div>
+            <p id="quantity-error" class="input-error" role="alert"></p>
+            <button id="add-button" class="button dark">Zutat auflegen <span aria-hidden="true">↑</span></button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="summary-screen" class="summary-screen hidden">
+      <p class="eyebrow">BESTELLUNG ABGESCHLOSSEN</p><h1>Gut gearbeitet!</h1><p id="summary-intro"></p>
+      <ol id="summary-list" class="summary-list"></ol>
+      <button id="summary-new-button" class="button primary big">Neue Bestellung üben <span aria-hidden="true">→</span></button>
+    </section>
+  </main>
+</body>
+</html>
