@@ -266,18 +266,20 @@ function finishLine() {
   state.result = lastErrors.length ? 'incorrect' : 'correct';
   if (lastErrors.length) {
     const feedback = $('#feedback');
-    feedback.append(renderComparison(state.layers, order.items[currentLine].expectedLayers, lastErrors));
-    feedback.querySelector('.feedback-actions').replaceChildren();
+    const actions = feedback.querySelector('.feedback-actions');
+    const comparison = renderComparison(state.layers, order.items[currentLine].expectedLayers, lastErrors);
+    feedback.insertBefore(comparison, actions);
+    actions.replaceChildren();
     const next = document.createElement('button'); next.type = 'button'; next.className = 'button dark';
     next.textContent = lineStates.some(entry => entry.result === null) ? 'Weiter zum nächsten Produkt' : 'Zusammenfassung ansehen';
     next.addEventListener('click', advanceLine);
-    feedback.querySelector('.feedback-actions').append(next);
+    actions.append(next);
     $('#submit-button').disabled = true;
     $('#add-button').disabled = true;
     $('#undo-button').disabled = true;
     $('#reset-button').disabled = true;
     renderTicket();
-    feedback.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    comparison.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     return;
   }
   advanceLine();
