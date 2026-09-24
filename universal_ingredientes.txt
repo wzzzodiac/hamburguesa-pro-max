@@ -1,0 +1,67 @@
+UNIVERSAL_INGREDIENTES
+Proyecto: hamburguesa-pro-max
+Fuente: fotos de las páginas 51 a 63 facilitadas para este proyecto.
+Alcance: inventario de piezas reutilizables. No es todavía el recetario ni define las modificaciones permitidas en pedidos.
+
+Convenciones
+- Cada ID representa un ingrediente o una pieza que se puede reconocer en el juego.
+- "Oberteil" y "Unterteil" se conservan tal como aparecen en las fotos. El montaje se representará volteado, como en los diagramas: Unterteil arriba y Oberteil abajo.
+- Un mismo ingrediente puede tener cantidades distintas según la receta. La dosis, la posición exacta y las excepciones van en el futuro recetario, no se duplican aquí.
+- "Gezwiebelt" describe el patty Beef 10:1 de las fotos: la cebolla viene asociada a ese patty. No equivale a añadir una ración de cebolla fresca.
+- "Sandwichsauce" y "Sauce Sandwich" se tratan como el mismo ingrediente.
+- No se incluyen fotos ni gráficos del material de referencia.
+
+PANES Y BASES
+bun_mcmuffin | Bun McMuffin | Oberteil (gebuttert), Unterteil | págs. 51-52
+bun_hamburger | Bun Hamburger | Oberteil, Unterteil; en Filet-o-Fish va "gesteamt" | págs. 52, 55-56, 59, 61
+bun_koernerbroetchen | Bun Körnerbrötchen | Oberteil, Unterteil | págs. 54-55
+bun_hamburger_royal | Bun Hamburger Royal | Oberteil, Unterteil | págs. 58-59, 63
+bun_big_mac | Bun Big Mac | Oberteil, Mittelteil, Unterteil | pág. 57
+bun_big_tasty | Bun Big Tasty | Oberteil, Unterteil | pág. 57
+bun_mcrib | Bun McRib | Oberteil, Unterteil; también se usa en McChicken Classic, confirmado por Walter | pág. 60
+bun_mccrispy | Bun McCrispy | Oberteil, Unterteil | pág. 61
+wrap_tortilla | Bun Wrap Tortilla | base de wrap, sin Oberteil separado | págs. 53, 62
+
+PATTIES, HUEVO Y BACON
+patty_beef_10_1 | Patty Beef 10:1 (gezwiebelt) | págs. 55-57, 59
+patty_beef_4_1 | Patty Beef 4:1 | pág. 58
+patty_beef_3_1 | Patty Beef 3:1 | pág. 57
+patty_sausage | Patty Sausage | págs. 52, 54
+patty_pork_mcrib | Patty Pork McRib | marinado con aprox. 40 g de Sauce Western/McRib en UHC; no se muestra como adición separada durante el montaje | pág. 60
+patty_chicken_tempura | Patty Chicken Tempura | entero; doble cuando la receta lo indica | págs. 51, 54, 61
+patty_chicken_classic | Patty Chicken Classic | entero o cortado por la mitad para wrap | págs. 60, 62
+patty_mccrispy | Patty McCrispy | pág. 61
+patty_filet_o_fish | Patty Filet-o-Fish | pág. 59
+patty_veggie | Patty Veggie | entero o cortado por la mitad para wrap | págs. 62-63
+round_egg | Round Egg | págs. 51-52, 55
+ruehrei | Rührei | 1,5 huevos por porción en los wraps de desayuno | pág. 53
+bacon_streifen | vorbereitete Bacon-Streifen | aparecen cantidades de 2 o 3 tiras según receta | págs. 51-54, 57
+
+QUESO
+cheese_standard | Cheese Standard | loncha entera o media loncha; algunas recetas indican disposición "sternförmig" | págs. 51-59, 61-63
+
+VERDURAS Y OTROS TOPPINGS
+eisbergsalat | Eisbergsalat | se expresa en gramos, con cantidades según receta | págs. 51, 53-55, 57-63
+tomate | Tomate | 1 o 2 rodajas según receta | págs. 51, 53-55, 57-58, 62-63
+salzgurke | Gurke (Salzgurke) | 1 o 2 rodajas según receta | págs. 55-60
+zwiebeln_frisch_weiss | Zwiebeln frisch, weiß | 7 g o 10 g según receta | págs. 57-58, 60
+crispy_onions | Crispy Onions | 3 g en McWrap Rührei Bacon | pág. 53
+jalapenos | Jalapeños | 3 unidades en McDouble Chili Cheese | pág. 56
+
+SALSAS Y UNTADOS
+sauce_sandwich | Sauce Sandwich / Sandwichsauce | págs. 51, 54, 58, 60, 62-63
+sauce_breakfast | Sauce Breakfast | 20 g en los productos donde aparece | págs. 53, 55
+sauce_ketchup | Sauce Ketchup | págs. 55-56, 58
+sauce_senf | Sauce Senf | 0,79 g por aplicación indicada | págs. 55-56, 58
+sauce_big_mac | Sauce Big Mac | pág. 57
+sauce_big_tasty | Sauce Big Tasty | págs. 57, 59
+sauce_honig_senf | Sauce Honig Senf | págs. 59, 61-62
+sauce_tartar | Sauce Tartar | pág. 59
+sauce_sweet_chili | Sauce Sweet Chili | pág. 61
+sauce_hot_chili_cheese | Sauce Hot Chili-Cheese | pág. 56
+sauce_western_mcrib | Sauce Western/McRib | sólo consta en la marinada del patty McRib (aprox. 40 g en UHC); no añadir como capa independiente salvo nueva evidencia | pág. 60
+butter | mantequilla | el Oberteil del McMuffin aparece "gebuttert"; cantidad no indicada | págs. 51-52
+
+Pendiente para la fase de imágenes
+- Dibujar una pieza reutilizable por ID y, cuando haga falta, variantes visuales para Oberteil/Unterteil, media loncha, patty cortado o preparación al vapor.
+- Mantener la información y el orden de las fotos; crear dibujos propios sin subir ni calcar las fotografías.
