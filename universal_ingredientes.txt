@@ -65,3 +65,6 @@ butter | mantequilla | el Oberteil del McMuffin aparece "gebuttert"; cantidad no
 Pendiente para la fase de imágenes
 - Dibujar una pieza reutilizable por ID y, cuando haga falta, variantes visuales para Oberteil/Unterteil, media loncha, patty cortado o preparación al vapor.
 - Mantener la información y el orden de las fotos; crear dibujos propios sin subir ni calcar las fotografías.
+
+Variante para pedidos personalizados (no es una receta base adicional)
+patty_beef_10_1_ohne_zwiebeln | Patty Beef 10:1 sin la cebolla incorporada | gráfico alternativo para "Ohne Zwiebeln"; se genera a partir del mismo dibujo, sin los trocitos de cebolla | pedidos especiales

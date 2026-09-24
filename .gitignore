@@ -1,0 +1,2 @@
+# Vector construction files are generated locally; the game loads PNG assets.
+assets/ingredients/*.svg

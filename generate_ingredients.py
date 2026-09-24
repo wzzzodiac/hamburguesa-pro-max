@@ -208,7 +208,7 @@ def wrap_tortilla():
     '''+''.join(spots))
 
 
-def patty_beef_10_1():
+def patty_beef_10_1(with_onions=True):
     rng = random.Random(101)
     specks = []
     for _ in range(185):
@@ -218,7 +218,7 @@ def patty_beef_10_1():
             tone = rng.choice(("#a9785a", "#d4a36e", "#36231e", "#8c593d"))
             specks.append(f'<ellipse cx="{x:.1f}" cy="{y:.1f}" rx="{rng.uniform(1,3):.1f}" ry="{rng.uniform(1,2):.1f}" fill="{tone}" opacity=".55"/>')
     onions = []
-    for _ in range(39):
+    for _ in range(39 if with_onions else 0):
         x, y = rng.uniform(107, 402), rng.uniform(68, 106)
         onions.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{rng.uniform(5,9):.1f}" height="{rng.uniform(3,6):.1f}" rx="1" transform="rotate({rng.randint(-35,35)} {x:.1f} {y:.1f})" fill="#e8d9c0" stroke="#b9ad97" stroke-width=".8"/>')
     return svg('''
@@ -476,6 +476,7 @@ ART = {
     "bun_hamburger_oberteil": bun_top,
     "bun_hamburger_unterteil": bun_bottom,
     "patty_beef_10_1": patty_beef_10_1,
+    "patty_beef_10_1_ohne_zwiebeln": lambda: patty_beef_10_1(False),
     "cheese_standard": cheese,
     "salzgurke": pickle,
     "eisbergsalat": lettuce,
