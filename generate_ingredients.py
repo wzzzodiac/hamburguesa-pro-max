@@ -148,6 +148,66 @@ def big_mac_bottom():
     return bun_bottom()
 
 
+def tasty_top():
+    return svg('''
+    <path d="M60 111 C60 42 148 16 256 17 C363 16 450 42 452 111
+      Q451 135 426 139 Q255 159 87 139 Q61 136 60 111Z"
+      fill="url(#bread)" stroke="#9c5e29" stroke-width="4"/>
+    <path d="M78 117 Q256 97 434 117 L433 138 Q256 159 79 138Z"
+      fill="url(#crumb)" stroke="#ae7334" stroke-width="3"/>
+    <path d="M115 77 Q168 34 249 31" fill="none" stroke="#ffe09a" stroke-width="9" opacity=".42" stroke-linecap="round"/>
+    ''')
+
+
+def tasty_bottom():
+    return svg('''
+    <path d="M60 71 Q255 35 452 71 L451 121 Q440 148 255 155
+      Q73 148 61 121Z" fill="url(#bread)" stroke="#9c5e29" stroke-width="4"/>
+    <ellipse cx="256" cy="73" rx="195" ry="38" fill="url(#crumb)"
+      stroke="#ad753b" stroke-width="4"/>
+    <ellipse cx="256" cy="72" rx="164" ry="24" fill="#fff0be" opacity=".44"/>
+    ''')
+
+
+def long_bun_top(crispy=False):
+    col = "#e9a754" if crispy else "#d99a52"
+    details = '<path d="M148 46 Q221 26 305 39 M119 92 Q256 76 390 89" fill="none" stroke="#ffe3a5" stroke-width="7" opacity=".45" stroke-linecap="round"/>' if crispy else '<path d="M117 95 Q257 74 394 95" fill="none" stroke="#f9ca87" stroke-width="6" opacity=".47"/>'
+    return svg(f'''
+    <path d="M52 100 Q58 45 143 37 Q256 22 369 37 Q453 47 460 100
+      Q460 129 423 139 Q256 159 89 139 Q52 130 52 100Z"
+      fill="{col}" stroke="#a16736" stroke-width="4"/>
+    <path d="M70 115 Q256 99 442 115 L437 136 Q256 157 75 136Z"
+      fill="url(#crumb)" stroke="#ad733d" stroke-width="3"/>{details}
+    ''')
+
+
+def long_bun_bottom(crispy=False):
+    col = "#dc9f59" if crispy else "#ce9052"
+    return svg(f'''
+    <path d="M56 81 Q256 45 456 81 L453 120 Q437 149 256 154
+      Q75 149 58 120Z" fill="{col}" stroke="#9a6438" stroke-width="4"/>
+    <ellipse cx="256" cy="80" rx="200" ry="38" fill="url(#crumb)"
+      stroke="#ac7542" stroke-width="4"/>
+    <ellipse cx="256" cy="79" rx="169" ry="23" fill="#fff1c4" opacity=".42"/>
+    ''')
+
+
+def wrap_tortilla():
+    rng = random.Random(56)
+    spots = []
+    for _ in range(60):
+        x,y=rng.uniform(85,427),rng.uniform(54,139)
+        if ((x-256)/204)**2+((y-94)/68)**2<.88:
+            spots.append(f'<ellipse cx="{x:.1f}" cy="{y:.1f}" rx="{rng.uniform(1,5):.1f}" ry="{rng.uniform(1,2.5):.1f}" fill="{rng.choice(("#b78658","#d3a76c","#e9d1a8"))}" opacity=".5"/>')
+    return svg('''
+    <ellipse cx="256" cy="100" rx="208" ry="68" fill="#c99b66"
+      stroke="#966c47" stroke-width="4"/>
+    <ellipse cx="256" cy="91" rx="208" ry="68" fill="#ead2a5"
+      stroke="#b68b5b" stroke-width="4"/>
+    <ellipse cx="256" cy="91" rx="184" ry="53" fill="#f4e0b8" opacity=".56"/>
+    '''+''.join(spots))
+
+
 def patty_beef_10_1():
     rng = random.Random(101)
     specks = []
@@ -172,6 +232,102 @@ def patty_beef_10_1():
     ''' + ''.join(specks) + ''.join(onions))
 
 
+def beef_large(size):
+    rng = random.Random(301+size)
+    left, right = (61,451) if size == 4 else (46,466)
+    grains=[]
+    for _ in range(175):
+        x,y=rng.uniform(left+12,right-12),rng.uniform(57,121)
+        if ((x-256)/((right-left)/2))**2+((y-89)/47)**2<.9:
+            grains.append(f'<ellipse cx="{x:.1f}" cy="{y:.1f}" rx="{rng.uniform(1,3):.1f}" ry="{rng.uniform(1,2):.1f}" fill="{rng.choice(("#9a6547","#bc8964","#33211b"))}" opacity=".6"/>')
+    return svg(f'''
+      <path d="M{left} 92 Q{left} 47 256 39 Q{right} 47 {right} 92
+      L{right-3} 121 Q256 162 {left+3} 121Z" fill="url(#beef)"
+      stroke="#35231d" stroke-width="4"/>
+      <ellipse cx="256" cy="89" rx="{(right-left)/2}" ry="48"
+      fill="#67402e" stroke="#38251f" stroke-width="4"/>
+      <path d="M{left+31} 121 Q256 151 {right-28} 121" fill="none"
+      stroke="#a66c48" stroke-width="3" opacity=".6"/>
+    '''+''.join(grains))
+
+
+def sausage_patty():
+    rng=random.Random(98)
+    crumbs=''.join(f'<ellipse cx="{rng.uniform(120,390):.1f}" cy="{rng.uniform(64,121):.1f}" rx="{rng.uniform(2,5):.1f}" ry="2" fill="{rng.choice(("#8a5136","#d19065","#5d3628"))}" opacity=".7"/>' for _ in range(92))
+    return svg('''<path d="M90 94 Q90 49 256 43 Q421 49 422 94 L421 119 Q255 158 91 119Z" fill="#935b3e" stroke="#593729" stroke-width="4"/><ellipse cx="256" cy="89" rx="166" ry="46" fill="#a36c49" stroke="#69402c" stroke-width="4"/>'''+crumbs)
+
+
+def pork_mcrib():
+    return svg('''
+    <path d="M67 74 Q81 50 136 48 L375 48 Q429 49 445 73 L442 126
+      Q427 151 368 149 L138 149 Q74 147 67 123Z" fill="#764034"
+      stroke="#472722" stroke-width="4"/>
+    <path d="M91 70 Q117 54 155 55 L359 55 Q402 54 421 70
+      M93 128 Q257 145 418 128" fill="none" stroke="#b56a46"
+      stroke-width="10" opacity=".6" stroke-linecap="round"/>
+    <path d="M151 60 Q133 89 153 138 M222 56 Q207 90 224 142
+      M295 55 Q279 90 295 141 M365 58 Q349 90 365 137"
+      fill="none" stroke="#42241f" stroke-width="9" opacity=".55"/>
+    <path d="M81 77 Q260 67 429 80" fill="none" stroke="#d48357"
+      stroke-width="4" opacity=".6"/>
+    ''')
+
+
+def fried_patty(kind, half=False):
+    rng=random.Random({"tempura":11,"classic":23,"mccrispy":42,"fish":61,"veggie":82}[kind]+int(half))
+    colors={"tempura":("#e9bd62","#bd8a3c"),"classic":("#dfa945","#ac762f"),"mccrispy":("#be8c4e","#805935"),"fish":("#d1a45a","#936e38"),"veggie":("#c49d58","#8c703e")}
+    main,edge=colors[kind]
+    if half:
+        outline='M129 84 Q130 54 224 50 L342 57 L342 128 Q225 148 151 132 Q129 121 129 84Z'
+    elif kind=="fish":
+        outline='M97 56 Q118 40 155 44 L369 44 Q410 42 422 66 L420 121 Q403 146 360 143 L153 143 Q105 142 95 122Z'
+    elif kind=="mccrispy":
+        outline='M63 92 Q58 64 93 56 Q115 33 150 50 Q187 30 219 44 Q258 32 292 48 Q333 36 364 57 Q415 48 441 81 Q451 113 417 126 Q398 152 361 138 Q328 155 285 143 Q250 155 211 140 Q168 156 133 135 Q83 149 63 116Z'
+    else:
+        outline='M70 86 Q68 60 107 55 Q128 39 160 49 Q201 34 239 45 Q276 33 310 48 Q345 36 377 54 Q426 52 443 80 Q451 110 418 127 Q385 149 355 138 Q313 151 281 141 Q244 150 213 139 Q167 150 133 135 Q87 141 70 115Z'
+    specks=[]
+    for _ in range(270):
+        x,y=rng.uniform(139 if half else 84,335 if half else 409),rng.uniform(55,128)
+        shade=rng.choice(("#fbe0a3","#8f6d38","#7f9950","#674d30")) if kind=="veggie" else rng.choice(("#ffe8a9","#a5793c","#875d2f"))
+        specks.append(f'<ellipse cx="{x:.1f}" cy="{y:.1f}" rx="{rng.uniform(1,3.5):.1f}" ry="{rng.uniform(1,2.3):.1f}" fill="{shade}" opacity=".55"/>')
+    clip='<clipPath id="patty-clip"><path d="'+outline+'"/></clipPath>'
+    cut=f'<path d="M342 57 L342 128" stroke="#fbdda3" stroke-width="8" opacity=".68"/>' if half else ''
+    return svg(f'<defs>{clip}</defs><path d="{outline}" fill="{main}" stroke="{edge}" stroke-width="5" stroke-linejoin="round"/><g clip-path="url(#patty-clip)">{"".join(specks)}</g>{cut}')
+
+
+def round_egg():
+    return svg('''
+    <path d="M84 100 Q72 63 125 59 Q165 40 203 61 Q248 31 291 57
+      Q344 41 376 68 Q432 58 431 104 Q433 141 370 140 Q317 157 266 139
+      Q207 158 162 138 Q99 150 84 100Z" fill="#fff9e8"
+      stroke="#d3ccb2" stroke-width="4"/>
+    <ellipse cx="256" cy="97" rx="65" ry="42" fill="#f4b52e"
+      stroke="#da9221" stroke-width="4"/>
+    <ellipse cx="239" cy="77" rx="23" ry="10" fill="#fff4b1" opacity=".6"/>
+    ''')
+
+
+def scrambled_egg():
+    rng=random.Random(31)
+    lumps=[]
+    for _ in range(35):
+        x,y=rng.uniform(110,407),rng.uniform(81,121)
+        lumps.append(f'<ellipse cx="{x:.1f}" cy="{y:.1f}" rx="{rng.uniform(11,25):.1f}" ry="{rng.uniform(5,11):.1f}" fill="{rng.choice(("#f8c444","#ffdc6d","#e7aa31"))}" stroke="#d69b31" stroke-width="1"/>')
+    return svg('<path d="M82 122 Q103 97 140 104 Q160 72 195 92 Q224 57 258 82 Q286 65 315 89 Q350 70 376 104 Q418 99 433 123 Q433 149 255 147 Q83 148 82 122Z" fill="#e5a430" stroke="#bc7f25" stroke-width="4"/>'+''.join(lumps))
+
+
+def bacon_strip():
+    return svg('''
+    <path d="M61 96 C110 45 165 112 218 73 C274 38 338 105 451 55
+      L451 93 C342 142 291 72 232 116 C159 158 119 83 62 135Z"
+      fill="#ad4e40" stroke="#79392f" stroke-width="4"/>
+    <path d="M65 106 C117 57 164 121 222 85 C287 48 336 114 447 70"
+      fill="none" stroke="#f4d4b0" stroke-width="16" opacity=".91"/>
+    <path d="M71 124 C129 79 170 144 233 101 C290 62 348 134 446 86"
+      fill="none" stroke="#dc947d" stroke-width="5" opacity=".8"/>
+    ''')
+
+
 def cheese():
     return svg('''
     <path d="M70 102 L247 38 L448 100 L271 164Z" fill="url(#cheese)"
@@ -180,6 +336,17 @@ def cheese():
       fill="#d99b2a" stroke="#ad7420" stroke-width="3" stroke-linejoin="round"/>
     <path d="M91 103 L249 48 L409 99" fill="none" stroke="#ffe991"
       stroke-width="5" opacity=".48" stroke-linecap="round"/>
+    ''')
+
+
+def cheese_half():
+    return svg('''
+    <path d="M117 106 L279 46 L395 113 L252 160Z" fill="url(#cheese)"
+      stroke="#bd872c" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M117 106 L252 160 L395 113 L395 126 L252 173 L117 119Z"
+      fill="#d99b2a" stroke="#ad7420" stroke-width="3"/>
+    <path d="M133 106 L278 56" stroke="#ffe991" stroke-width="5"
+      opacity=".5" stroke-linecap="round"/>
     ''')
 
 
@@ -220,6 +387,56 @@ def lettuce():
     return svg(''.join(leaves))
 
 
+def tomato():
+    rng=random.Random(12)
+    seeds=[]
+    for _ in range(14):
+        x,y=rng.uniform(186,326),rng.uniform(72,108)
+        seeds.append(f'<ellipse cx="{x:.1f}" cy="{y:.1f}" rx="4" ry="2" fill="#ffe5a0" opacity=".8" transform="rotate({rng.randrange(-70,70)} {x:.1f} {y:.1f})"/>')
+    return svg('''
+    <ellipse cx="256" cy="113" rx="109" ry="44" fill="#a9232a"/>
+    <ellipse cx="256" cy="88" rx="111" ry="49" fill="#ec5151"
+      stroke="#b72c33" stroke-width="5"/>
+    <ellipse cx="256" cy="88" rx="88" ry="34" fill="#f07569"
+      stroke="#d03e43" stroke-width="3"/>
+    <ellipse cx="256" cy="88" rx="47" ry="20" fill="#eb4146"/>
+    '''+''.join(seeds))
+
+
+def onion_fresh():
+    parts=[]
+    for i,(x,y,rot) in enumerate(((123,86,-15),(200,72,7),(274,91,-8),(340,70,14))):
+        parts.append(f'<g transform="rotate({rot} {x} {y})"><path d="M{x-52} {y+32} Q{x-26} {y-41} {x+45} {y-23} Q{x+8} {y-14} {x-15} {y+35}Z" fill="#fff8dd" stroke="#c1b9a3" stroke-width="4"/><path d="M{x-39} {y+18} Q{x-11} {y-27} {x+29} {y-22}" fill="none" stroke="#d8d1bc" stroke-width="3"/></g>')
+    return svg(''.join(parts))
+
+
+def crispy_onions():
+    rng=random.Random(117)
+    bits=[]
+    for _ in range(105):
+        x,y=rng.gauss(255,81),rng.gauss(107,22)
+        if 84<x<429 and 60<y<151:
+            c=rng.choice(("#ae7137","#d29b4a","#efc167","#734a29"))
+            bits.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{rng.uniform(5,15):.1f}" height="{rng.uniform(2,5):.1f}" rx="1.5" fill="{c}" transform="rotate({rng.randint(-65,65)} {x:.1f} {y:.1f})"/>')
+    return svg(''.join(bits))
+
+
+def jalapeno():
+    rng=random.Random(25)
+    seeds=[]
+    for _ in range(17):
+        x,y=rng.uniform(196,317),rng.uniform(70,108)
+        seeds.append(f'<ellipse cx="{x:.1f}" cy="{y:.1f}" rx="3" ry="2" fill="#f4e9bd"/>')
+    return svg('''
+    <ellipse cx="256" cy="105" rx="92" ry="42" fill="#315d25"/>
+    <ellipse cx="256" cy="86" rx="92" ry="43" fill="#4e993f"
+      stroke="#2b662c" stroke-width="5"/>
+    <ellipse cx="256" cy="86" rx="66" ry="27" fill="#b8d892"
+      stroke="#49913f" stroke-width="4"/>
+    <ellipse cx="256" cy="86" rx="38" ry="17" fill="#edf1bd"/>
+    '''+''.join(seeds))
+
+
 def ketchup():
     return svg('''
     <path d="M127 111 Q133 94 153 98 Q157 77 177 81 Q193 57 210 78
@@ -233,6 +450,26 @@ def ketchup():
     <path d="M153 124 Q260 151 358 124" fill="none" stroke="#a81f1b"
       stroke-width="3" opacity=".45"/>
     ''')
+
+
+def sauce(color, dark, light, style):
+    rng=random.Random(sum(ord(c) for c in style))
+    flecks=[]
+    if style in ("tartar", "big_mac", "big_tasty", "honig_senf", "sweet_chili", "hot_chili_cheese", "breakfast"):
+        for _ in range(26):
+            x,y=rng.uniform(153,358),rng.uniform(92,128)
+            shade={"tartar":"#6f9a5a","big_mac":"#d99063","big_tasty":"#884d30","honig_senf":"#9a6925","sweet_chili":"#c53b25","hot_chili_cheese":"#d96f2e","breakfast":"#a9784e"}[style]
+            flecks.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{rng.uniform(1,2.5):.1f}" fill="{shade}" opacity=".7"/>')
+    return svg(f'''
+      <path d="M124 118 Q130 96 156 97 Q167 66 190 83 Q209 56 229 78
+      Q255 44 275 80 Q299 59 315 85 Q338 74 353 102 Q382 101 390 119
+      Q385 141 324 144 L185 144 Q126 141 124 118Z" fill="{color}"
+      stroke="{dark}" stroke-width="4"/>
+      <path d="M157 106 Q180 79 200 104 M230 85 Q251 59 270 89
+      M301 95 Q330 79 348 108" fill="none" stroke="{light}"
+      stroke-width="5" opacity=".7" stroke-linecap="round"/>
+      {''.join(flecks)}
+      ''')
 
 
 ART = {
@@ -252,6 +489,41 @@ ART = {
     "bun_big_mac_oberteil": big_mac_top,
     "bun_big_mac_mittelteil": big_mac_middle,
     "bun_big_mac_unterteil": big_mac_bottom,
+    "bun_big_tasty_oberteil": tasty_top,
+    "bun_big_tasty_unterteil": tasty_bottom,
+    "bun_mcrib_oberteil": lambda: long_bun_top(False),
+    "bun_mcrib_unterteil": lambda: long_bun_bottom(False),
+    "bun_mccrispy_oberteil": lambda: long_bun_top(True),
+    "bun_mccrispy_unterteil": lambda: long_bun_bottom(True),
+    "wrap_tortilla": wrap_tortilla,
+    "patty_beef_4_1": lambda: beef_large(4),
+    "patty_beef_3_1": lambda: beef_large(3),
+    "patty_sausage": sausage_patty,
+    "patty_pork_mcrib": pork_mcrib,
+    "patty_chicken_tempura": lambda: fried_patty("tempura"),
+    "patty_chicken_classic": lambda: fried_patty("classic"),
+    "patty_chicken_classic_half": lambda: fried_patty("classic",True),
+    "patty_mccrispy": lambda: fried_patty("mccrispy"),
+    "patty_filet_o_fish": lambda: fried_patty("fish"),
+    "patty_veggie": lambda: fried_patty("veggie"),
+    "patty_veggie_half": lambda: fried_patty("veggie",True),
+    "round_egg": round_egg,
+    "ruehrei": scrambled_egg,
+    "bacon_streifen": bacon_strip,
+    "cheese_standard_half": cheese_half,
+    "tomate": tomato,
+    "zwiebeln_frisch_weiss": onion_fresh,
+    "crispy_onions": crispy_onions,
+    "jalapenos": jalapeno,
+    "sauce_sandwich": lambda: sauce("#f9f4e9","#d1c6b5","#ffffff","sandwich"),
+    "sauce_breakfast": lambda: sauce("#c39263","#986941","#e7c49b","breakfast"),
+    "sauce_senf": lambda: sauce("#f1c52f","#ba8c20","#ffe47b","senf"),
+    "sauce_big_mac": lambda: sauce("#e2ad83","#b97759","#f9d7af","big_mac"),
+    "sauce_big_tasty": lambda: sauce("#be8054","#895332","#dfab75","big_tasty"),
+    "sauce_honig_senf": lambda: sauce("#d6af55","#9d7739","#f6d885","honig_senf"),
+    "sauce_tartar": lambda: sauce("#f6f2e2","#b8baa5","#ffffff","tartar"),
+    "sauce_sweet_chili": lambda: sauce("#e46d39","#b74324","#ffa567","sweet_chili"),
+    "sauce_hot_chili_cheese": lambda: sauce("#efad27","#bc7222","#ffdc5f","hot_chili_cheese"),
 }
 
 
