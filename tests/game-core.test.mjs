@@ -6,7 +6,8 @@ import { ingredientCatalog, checkProduct } from '../src/game-core.mjs';
 
 const recipes = JSON.parse(readFileSync(new URL('../data/recipes.json', import.meta.url))).recipes;
 const byId = id => recipes.find(recipe => recipe.id === id);
-const copy = layers => layers.map(({ ingredient, quantity, unit }) => ({ ingredient, quantity, unit }));
+const copy = layers => layers.map(({ ingredient, quantity, unit, amountPerApplicationMl }) =>
+  ({ ingredient, quantity, unit, ...(amountPerApplicationMl === undefined ? {} : { amountPerApplicationMl }) }));
 
 test('catalog includes every recipe ingredient and the onion-free patty', () => {
   const catalog = ingredientCatalog(recipes);
@@ -42,4 +43,13 @@ test('repeated products are independent ticket lines and quantities or order are
   assert.ok(checkProduct(wrongAmount, expected).some(error => error.type === 'quantity'));
   const wrongOrder = copy(expected); [wrongOrder[1], wrongOrder[2]] = [wrongOrder[2], wrongOrder[1]];
   assert.ok(checkProduct(wrongOrder, expected).some(error => error.type === 'ingredient'));
+});
+
+test('sauce applications require the exact milliliters per application', () => {
+  const expected = byId('big_mac').layers;
+  const correct = copy(expected);
+  assert.deepEqual(checkProduct(correct, expected), []);
+  const sauce = correct.find(layer => layer.unit === 'application');
+  sauce.amountPerApplicationMl += 5;
+  assert.ok(checkProduct(correct, expected).some(error => error.type === 'dose'));
 });

@@ -94,7 +94,7 @@ function renderStack() {
   for (const layer of layers) {
     const band = document.createElement('div'); band.className = 'stack-layer';
     const img = document.createElement('img'); img.src = imageUrl(layer.ingredient); img.alt = '';
-    const badge = document.createElement('span'); badge.className = 'stack-quantity'; badge.textContent = quantityText(layer.quantity, layer.unit);
+    const badge = document.createElement('span'); badge.className = 'stack-quantity'; badge.textContent = `${quantityText(layer.quantity, layer.unit)}${layer.unit === 'application' ? ` × ${layer.amountPerApplicationMl} ml` : ''}`;
     band.append(img, badge); stack.append(band);
   }
   $('#empty-stack').classList.toggle('hidden', layers.length > 0);
@@ -142,6 +142,8 @@ function selectIngredient(id) {
   input.step = unit === 'g' ? 'any' : '1';
   input.placeholder = unit === 'g' ? 'z. B. 12,5' : '1';
   $('#quantity-error').textContent = '';
+  $('#dose-panel').classList.toggle('hidden', unit !== 'application');
+  $('#dose-input').value = '';
   $('#quantity-panel').classList.remove('hidden');
   renderIngredients();
   $('#quantity-panel').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
@@ -163,7 +165,13 @@ function addLayer() {
     $('#quantity-error').textContent = unit === 'g' ? 'Bitte eine Grammzahl über 0 eingeben.' : 'Bitte eine ganze Menge über 0 eingeben.';
     input.focus(); return;
   }
-  lineStates[currentLine].layers.push({ ingredient: selectedIngredient, quantity, unit });
+  const amountPerApplicationMl = Number($('#dose-input').value);
+  if (unit === 'application' && !amountPerApplicationMl) {
+    $('#quantity-error').textContent = 'Bitte die Milliliter pro Auftrag wählen.';
+    $('#dose-input').focus(); return;
+  }
+  lineStates[currentLine].layers.push({ ingredient: selectedIngredient, quantity, unit,
+    ...(unit === 'application' ? { amountPerApplicationMl } : {}) });
   lastErrors = null; $('#feedback').classList.add('hidden');
   renderStack();
   $('#quantity-error').textContent = '';
@@ -187,6 +195,7 @@ function errorText(error) {
   if (error.type === 'missing') return `${level} fehlt: ${ingredientName(error.wanted.ingredient)} (${quantityText(error.wanted.quantity, error.wanted.unit)}).`;
   if (error.type === 'extra') return `${level} ist zu viel: ${ingredientName(error.placed.ingredient)}.`;
   if (error.type === 'ingredient') return `${level}: Hier gehört ${ingredientName(error.wanted.ingredient)} hin, statt ${ingredientName(error.placed.ingredient)}. Prüfe auch die Reihenfolge.`;
+  if (error.type === 'dose') return `${level}: ${ingredientName(error.wanted.ingredient)} braucht ${error.wanted.amountPerApplicationMl} ml pro Auftrag; gewählt sind ${error.placed.amountPerApplicationMl} ml.`;
   return `${level}: ${ingredientName(error.wanted.ingredient)} braucht ${quantityText(error.wanted.quantity, error.wanted.unit)}; gelegt sind ${quantityText(error.placed.quantity, error.placed.unit)}.`;
 }
 

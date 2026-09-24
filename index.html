@@ -73,6 +73,7 @@
             <div class="selected-ingredient"><img id="selected-image" alt=""><div><strong id="selected-name"></strong><span id="selected-unit"></span></div></div>
             <label for="quantity-input">Menge</label>
             <div class="quantity-control"><button id="quantity-minus" type="button" aria-label="Menge verringern">−</button><input id="quantity-input" type="number" inputmode="decimal" min="0.01" step="any" value="1"><button id="quantity-plus" type="button" aria-label="Menge erhöhen">+</button><span id="quantity-suffix"></span></div>
+            <div id="dose-panel" class="dose-panel hidden"><label for="dose-input">Milliliter pro Auftrag</label><select id="dose-input"><option value="">Menge wählen</option><option value="10">10 ml</option><option value="12">12 ml</option><option value="15">15 ml</option><option value="20">20 ml</option></select></div>
             <p id="quantity-error" class="input-error" role="alert"></p>
             <button id="add-button" class="button dark">Zutat auflegen <span aria-hidden="true">↑</span></button>
           </div>

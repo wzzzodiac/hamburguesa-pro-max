@@ -23,6 +23,8 @@ export function checkProduct(actual, expected) {
       errors.push({ type: 'ingredient', index, placed, wanted });
     } else if (placed.unit !== wanted.unit || Number(placed.quantity) !== wanted.quantity) {
       errors.push({ type: 'quantity', index, placed, wanted });
+    } else if (wanted.unit === 'application' && Number(placed.amountPerApplicationMl) !== wanted.amountPerApplicationMl) {
+      errors.push({ type: 'dose', index, placed, wanted });
     }
   }
   return errors;
